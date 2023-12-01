@@ -12,13 +12,26 @@ body {
     flex-direction: column;
     width: 25%;
 }
-label {
+
+.input-fields {
     display: flex;
+    flex-direction: column;
+    padding: 10px;
 }
 
-.chech-boxes {
+.input-panel label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-panel label span {
+    width: 60px;
+}
+
+.check-boxes {
     display: flex;
     flex-flow: row wrap;
+    padding: 10px;
 }
 s
 label span {

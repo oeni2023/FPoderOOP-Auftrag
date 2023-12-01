@@ -13,32 +13,37 @@
 
 <!-- CODE goes here -->
 <main>
+    <h1>FP oder OOP - Auftra</h1>
+    <h2>Source: <a href="https://moodle.ffhs.ch/mod/assign/view.php?id=4440578">https://moodle.ffhs.ch/mod/assign/view.php?id=4440578</a> </h2>
+
     <!-- INPUT panel -->
     <section class="input-panel">
-        <label for="name">
-            <span>Name:</span>
-            <input id="name" type="text" minlength="3" maxlength="10">
-        </label>
-        <label for="color">
-            <span>Farbe:</span>
-            <input id="color" type="text" pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" maxlength="7">
-        </label>
-        <label for="numbers">
-            <span>Zahlen:</span>
-            <input id="numbers" type="text" pattern="^\s*\d+\s*(,\s*\d+\s*)*$" >
-        </label>
+        <div class="input-fields">
+            <label for="name">
+                <span>Name:</span>
+                <input id="name" type="text" minlength="3" maxlength="10">
+            </label>
+            <label for="color">
+                <span>Farbe:</span>
+                <input id="color" type="text" pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" maxlength="7">
+            </label>
+            <label for="numbers">
+                <span>Zahlen:</span>
+                <input id="numbers" type="text" pattern="^\s*\d+\s*(,\s*\d+\s*)*$" >
+            </label>
+        </div>
         <button id="add-button" class="add">Hinzufügen</button>
-        <div class="status-text">ERFOLGS-/FEHLERMEDLUNG</div>
+        <div class="status-text"> >>> ERFOLGS-/FEHLERMEDLUNG</div>
     </section>
 
     <!-- CONTROL panel  -->
     <section class="result-panel">
-        <div class="placeholder">RESULTS</div>
+        <div class="placeholder">>>> RESULTS</div>
     </section>
 
     <!-- CONTROL panel  -->
     <section class="control-panel">
-        <div class="chech-boxes">
+        <div class="check-boxes">
             <label for="asc">
                 <input id="asc" type="checkbox">
             </label>
