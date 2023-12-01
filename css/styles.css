@@ -1,0 +1,43 @@
+
+/** CODE goes here */
+
+body {
+    font-family: sans-serif;
+}
+
+.input-panel {
+    background-color: #CCCCCC7A;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+label {
+    display: flex;
+}
+
+.chech-boxes {
+    display: flex;
+    flex-flow: row wrap;
+}
+s
+label span {
+    width: 75px;
+}
+
+.placeholder {
+    background-color: #edffc1;
+    padding: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    width: 25%;
+    height: 50px;
+}
+
+.control-panel {
+    background-color: #cad0e8;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}

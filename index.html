@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Topic name - snippet</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="scripts/scripts.js"></script>
+</head>
+<body>
+
+<!-- CODE goes here -->
+<main>
+    <!-- INPUT panel -->
+    <section class="input-panel">
+        <label for="name">
+            <span>Name:</span>
+            <input id="name" type="text" minlength="3" maxlength="10">
+        </label>
+        <label for="color">
+            <span>Farbe:</span>
+            <input id="color" type="text" pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" maxlength="7">
+        </label>
+        <label for="numbers">
+            <span>Zahlen:</span>
+            <input id="numbers" type="text" pattern="^\s*\d+\s*(,\s*\d+\s*)*$" >
+        </label>
+        <button id="add-button" class="add">Hinzufügen</button>
+        <div class="status-text">ERFOLGS-/FEHLERMEDLUNG</div>
+    </section>
+
+    <!-- CONTROL panel  -->
+    <section class="result-panel">
+        <div class="placeholder">RESULTS</div>
+    </section>
+
+    <!-- CONTROL panel  -->
+    <section class="control-panel">
+        <div class="chech-boxes">
+            <label for="asc">
+                <input id="asc" type="checkbox">
+            </label>
+            <label for="desc">
+                <input id="desc" type="checkbox">
+            </label>
+            <label for="sum">
+                <input id="sum" type="checkbox">
+            </label>
+            <label for="fak">
+                <input id="fak" type="checkbox">
+            </label>
+            <label for="orig">
+                <input id="orig" type="checkbox">
+            </label>
+        </div>
+        <button id="rand-button" class="rand">Zufälliges Feld markieren</button>
+    </section>
+</main>
+
+</body>
+</html>
