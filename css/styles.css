@@ -32,8 +32,9 @@ body {
     display: flex;
     flex-flow: row wrap;
     padding: 10px;
+    justify-content: space-between;
 }
-s
+
 label span {
     width: 75px;
 }
