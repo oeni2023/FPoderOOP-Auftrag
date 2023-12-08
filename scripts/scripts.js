@@ -9,6 +9,8 @@ const inputName = document.getElementById('input-name');
 const inputColor = document.getElementById('input-color');
 const inputNumbers = document.getElementById('input-numbers');
 const resultDiv = document.getElementById('result-wrapper');
+const checkBoxes = document.getElementsByName('check-boxes');
+
 
 
 /* Define eventListener */
@@ -16,7 +18,9 @@ const resultDiv = document.getElementById('result-wrapper');
 btnAdd.addEventListener('click', () => {
     console.log("'Add' clicked!");
 
+
     removeMessage();
+    // removeTile()
 
     if (!(checkName() && checkColor() && ckeckNumbers())) {
         console.log('Check not successful!');
@@ -24,19 +28,30 @@ btnAdd.addEventListener('click', () => {
         const messageClass = 'error';
         addMessage(messageSuccess, messageClass);
     } else {
-        console.log('Check successful!');
+        //console.log('Check successful!');
         const messageSuccess = 'Eingabe korrekt!';
         const messageClass = 'ok';
         addMessage(messageSuccess, messageClass);
-    }
 
-    //createTiles()
+        createTiles();
+
+    }
 });
+
+
+/* Sort numbers eventListener */
+window.addEventListener('DOMContentLoaded', sortNumbers);
+
 
 /* Rand - Button */
 btnRand.addEventListener('click', () => {
-   console.log("'Rand' clicked!")
+   console.log("'Rand' clicked!");
+    const tiles = document.getElementsByName('results');
+    const rand = Math.floor( Math.random() * tiles.length );
+    tiles[rand].style.backgroundColor = "yellow";
+
 });
+
 
 /* Define Functions */
 /* Check name field */
@@ -47,7 +62,7 @@ function checkName() {
         return false;
     }
     inputName.classList.add('ok');
-    inputName.disabled = true;
+    //inputName.disabled = true;
     return true;
 }
 
@@ -62,7 +77,7 @@ function checkColor() {
         return false;
     }
     inputColor.classList.add('ok');
-    inputColor.disabled = true;
+    //inputColor.disabled = true;
     return true;
 }
 
@@ -70,29 +85,89 @@ function checkColor() {
 function ckeckNumbers() {
     const arrayNumbers = inputNumbers.value.split(',');
     const numberPattern = /^[0-9]+(,[0-9]+)*$/;
-    console.log(arrayNumbers);
 
     if ( !(arrayNumbers.length > 0 && numberPattern.test(arrayNumbers))) {
         console.log("numbers not correct");
-        inputNumbers.classList.add('error');
+        //inputNumbers.classList.add('error');
         return false;
     }
     inputNumbers.classList.add('ok');
-    inputNumbers.disabled = true;
+    //inputNumbers.disabled = true;
     return true;
 }
 
+/* Sort numbers */
+function sortNumbers() {
+    checkBoxes.forEach((checkBox) => {
+
+        checkBox.addEventListener('change', () => {
+            const numOrig = inputNumbers.value.split(",");
+            const numSort = numOrig.map(str => {
+                return parseInt(str, 10)
+            });
+            console.log(numSort);
+
+            function factorialize(num) {
+                if (num < 0)
+                    return -1;
+                else if (num == 0)
+                    return 1;
+                else {
+                    return (num * factorialize(num - 1));
+                }
+            }
+
+            if ( checkBox.checked ) {
+                //console.log(checkBox.id);
+                switch (true) {
+                    case ( checkBox.id === 'asc' ):
+                        /* Sort ascending */
+                        numbers.innerText = numSort.sort(function(a, b){return a-b});
+                        break;
+                    case ( checkBox.id === 'desc' ):
+                        /* Sort descending */
+                        numbers.innerText = numSort.sort(function(a, b){return b-a});
+                        break;
+                    case ( checkBox.id === 'sum' ):
+                        /* Sum */
+                        numbers.innerText = numSort.reduce((a,c) => {return a + c}, 0);
+                        break;
+                    case ( checkBox.id === 'fak' ):
+                        const fakNums = numSort.map((x) => factorialize(x));
+                        numbers.innerHTML = fakNums.toString();
+                        break;
+                    default:
+                        checkBox.id === orig
+                        numbers.innerText = numOrig;
+                }
+            }
+        });
+    });
+}
 
 /* Create tiles */
 function createTiles() {
     const elementType = 'div';
-    const elementText = inputName.value;
-    const elementClass = 'ok';
+    const elementText = 'Results: '
+    const elementBorderStyle = `${inputColor.value} solid 5px`;
     const elementParent = resultDiv;
 
+    console.log(`elementText: ${elementText}`)
+
     const tileGenerator = new HtmlGenerator(elementType, elementText);
-    tileGenerator.addClass(elementClass);
+
+    tileGenerator.addClass('results')
+    tileGenerator.addSpan('name', inputName.value);
+    tileGenerator.addSpan('color', inputColor.value);
+    tileGenerator.addSpan('numbers', inputNumbers.value);
+
+    tileGenerator.setBorderStyle(elementBorderStyle);
+
     tileGenerator.appendTo(elementParent);
+    const enteredNumbers = document.getElementById('numbers').innerText.split(',');
+    //console.log(enteredNumbers);
+
+    return enteredNumbers;
 
 }
 
@@ -107,6 +182,7 @@ function addMessage(messageText, messageClass) {
     const messageGenerator = new HtmlGenerator(elementType,  elementText);
     messageGenerator.addClass(elementClass);
     messageGenerator.appendTo(elementParent);
+
 }
 
 
@@ -114,6 +190,12 @@ function removeMessage() {
     statusDiv.innerHTML= '';
 }
 
+function removeTile() {
+    resultDiv.innerHTML= '';
+}
+
+
+/* HTML Generator class */
 class HtmlGenerator {
     constructor(tagName, textContent) {
         this.element = document.createElement(tagName);
@@ -123,12 +205,24 @@ class HtmlGenerator {
         this.element.classList.add(className);
     }
 
-    setAttribute(attributeName, attributeValue) {
+    setAttributes(attributeName, attributeValue) {
         this.element.setAttribute(attributeName, attributeValue);
     }
 
+    addSpan(nameAttributeValue, contentText) {
+        const mySpan = document.createElement('span');
+        mySpan.innerText = contentText;
+        mySpan.classList.add('result-span');
+        mySpan.setAttribute('id', nameAttributeValue)
+        this.element.appendChild(mySpan);
+    }
+
     setBorderStyle(borderStyle) {
-        this.element.style.border(borderStyle);
+        this.element.style.border = borderStyle;
+    }
+
+    setBgColor(bgColor) {
+        this.element.style.backgroundColor = bgColor;
     }
 
     appendTo(parentElement) {
