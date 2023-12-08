@@ -14,26 +14,26 @@
 <!-- CODE goes here -->
 <main>
     <h1>FP oder OOP - Auftrag</h1>
-    <h2>Source: <a href="https://moodle.ffhs.ch/mod/assign/view.php?id=4440578">https://moodle.ffhs.ch/mod/assign/view.php?id=4440578</a> </h2>
+    <p>Source: <a href="https://moodle.ffhs.ch/mod/assign/view.php?id=4440578">https://moodle.ffhs.ch/mod/assign/view.php?id=4440578</a> </p>
 
     <!-- INPUT panel -->
     <section id="input-panel" class="input-panel">
         <div class="input-fields">
             <label for="input-name">
-                <span>Name:</span>
-                <input id="input-name" type="text" minlength="3" maxlength="10">
+                <span>[1] Name:</span>
+                <input id="input-name" type="text" minlength="3" maxlength="10" required>
             </label>
             <label for="input-color">
-                <span>Farbe:</span>
-                <input id="input-color" type="text" pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" maxlength="7">
+                <span>[2] Farbe:</span>
+                <input id="input-color" type="text" pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$" maxlength="7" required>
             </label>
             <label for="input-numbers">
-                <span>Zahlen:</span>
-                <input id="input-numbers" type="text" pattern="^\s*\d+\s*(,\s*\d+\s*)*$" >
+                <span>[5] Zahlen:</span>
+                <input id="input-numbers" type="text" pattern="^\s*\d+\s*(,\s*\d+\s*)*$" required>
             </label>
         </div>
-        <button id="add-button" class="add">Hinzufügen</button>
-        <div id="status-wrapper"> >>> ERFOLGS-/FEHLERMELDUNG</div>
+        <button id="add-button" class="add"> [4] Hinzufügen</button>
+        <div id="status-wrapper" class="status-wrapper"> [5] >>> ERFOLGS-/FEHLERMELDUNG</div>
     </section>
 
     <!-- CONTROL panel  -->
@@ -45,27 +45,28 @@
     <section class="control-panel">
         <div class="check-boxes">
             <label for="asc">
-                <span>ASC</span>
+                <span>[7] ASC</span>
                 <input id="asc" name="check-boxes" type="radio">
             </label>
             <label for="desc">
-                <span>DESC</span>
+                <span>[8] DESC</span>
                 <input id="desc" name="check-boxes" type="radio">
             </label>
             <label for="sum">
-                <span>SUM</span>
+                <span>[9] SUM</span>
                 <input id="sum" name="check-boxes" type="radio">
             </label>
-            <span>FAK</span>
+
             <label for="fak">
+                <span>[10] FAK</span>
                 <input id="fak" name="check-boxes" type="radio">
             </label>
-            <span>ORIG</span>
             <label for="orig">
+                <span>[11] ORIG</span>
                 <input id="orig" name="check-boxes" type="radio" checked>
             </label>
         </div>
-        <button id="rand-button" class="rand">Zufälliges Feld markieren</button>
+        <button id="rand-button" class="rand">[6] Zufälliges Feld markieren</button>
     </section>
 </main>
 
