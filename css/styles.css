@@ -9,10 +9,6 @@ button {
     max-width: 90%;
 }
 
-label span {
-   /* width: 1rem; */
-}
-
 .input-panel {
     background-color: #CCCCCC7A;
     padding: 10px;
@@ -80,14 +76,14 @@ label span {
 
 .error {
     background-color: #ffc0c0;
+    border: 3px solid red;
 }
 
 .ok {
     background-color: #c8ffc0;
+    border: 3px solid #4aff02;
 }
 
-.element-border {
-    border: 3px solid red;
-}
+
 
 
