@@ -80,13 +80,14 @@ body {
     display: flex;
     flex-direction: column;
     padding:  10px;
-    /*width: 90%;*/
+    width: 150px;
 }
 
 .result-span {
     display: flex;
     flex-direction: column;
     padding:  10px;
+    overflow-wrap: break-word;
 }
 
 .error {
