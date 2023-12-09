@@ -367,9 +367,9 @@ function addMessage(messageText, messageClass) {
 
     const messageGenerator = new HtmlGenerator('div', elementParent, elementText);
     messageGenerator.addElmClass(elementClass);
+    messageGenerator.setElemText(elementText);
     messageGenerator.appendTo(elementParent);
 }
-
 
 function createTile() {
     const myHtmlElement = new HtmlGenerator('div', parentElement);
@@ -378,7 +378,6 @@ function createTile() {
     myHtmlElement.setElmAttribute('id',myHtmlElement.id);
     myHtmlElement.setElmAttribute('name', 'tile');
     myHtmlElement.addElmClass('results');
-    //myHtmlElement.addElmClass('error');
 
     myHtmlElement.setBorderStyle(elementBorderStyle);
     myHtmlElement.addSubElements();
