@@ -255,10 +255,7 @@
 //     }
 // }
 
-
-
-/** TEST Section */
-
+/* HTML elements */
 const inputName = document.getElementById('input-name');
 const inputColor = document.getElementById('input-color');
 const inputNumbers = document.getElementById('input-numbers');
@@ -268,7 +265,7 @@ const btnAdd = document.getElementById('add-button');
 const btnRand = document.getElementById('rand-button');
 const checkBoxes = document.getElementsByName('check-boxes');
 
-
+/* Add-button eventListener */
 btnAdd.addEventListener('click', () => {
     /* Remove existing messages */
     removeMessage();
@@ -296,7 +293,6 @@ btnAdd.addEventListener('click', () => {
 /* Sort numbers eventListener */
 window.addEventListener('DOMContentLoaded', sortNumbers);
 
-
 /* Rand - Button */
 btnRand.addEventListener('click', () => {
     console.log("'Rand' clicked!");
@@ -310,11 +306,6 @@ btnRand.addEventListener('click', () => {
     tiles[rand].style.backgroundColor = "yellow";
 });
 
-
-function removeMessage() {
-    statusDiv.innerHTML= '';
-}
-
 /* Check name field */
 function checkName() {
     if ( inputName.value.length < 3 || inputName.value.length > 10) {
@@ -326,7 +317,6 @@ function checkName() {
     //inputName.disabled = true;
     return true;
 }
-
 
 /* Check color field */
 function checkColor() {
@@ -358,7 +348,7 @@ function checkNumbers() {
     return true;
 }
 
-
+/* Create status messages */
 function addMessage(messageText, messageClass) {
     const elementType = 'div';
     const elementText = messageText;
@@ -371,6 +361,12 @@ function addMessage(messageText, messageClass) {
     messageGenerator.appendTo(elementParent);
 }
 
+/* Remove status messages */
+function removeMessage() {
+    statusDiv.innerHTML= '';
+}
+
+/* Create tiles */
 function createTile() {
     const myHtmlElement = new HtmlGenerator('div', parentElement);
     const elementBorderStyle = `${inputColor.value} solid 3px`;
@@ -387,7 +383,6 @@ function createTile() {
     //console.log(myHtmlElement);
 }
 
-
 /* Sort numbers */
 function sortNumbers() {
     checkBoxes.forEach((checkBox) => {
@@ -399,17 +394,10 @@ function sortNumbers() {
             const lastNumbers = lastTile.lastChild;
             const lastNumbersText = inputNumbers.value;
 
-            // console.log(Tiles);
-            // console.log(lastTile);
-            // console.log(lastNumbers);
-            // console.log(lastNumbersText);
-
             const numOrig = lastNumbersText.split(",");
             const numSort = numOrig.map(str => {
                 return parseInt(str, 10)
             });
-            console.log(numOrig);
-            console.log(numSort);
 
             function factorialize(num) {
                 if (num < 0)
@@ -427,27 +415,22 @@ function sortNumbers() {
                     case ( checkBox.id === 'asc' ):
                         /* Sort ascending */
                         lastNumbers.innerText = numSort.sort(function(a, b){return a-b});
-                        console.log(numSort.sort(function(a, b){return a-b}));
                         break;
                     case ( checkBox.id === 'desc' ):
                         /* Sort descending */
                         lastNumbers.innerText = numSort.sort(function(a, b){return b-a});
-                        console.log(numSort.sort(function(a, b){return b-a}));
                         break;
                     case ( checkBox.id === 'sum' ):
                         /* Sum */
                         lastNumbers.innerText = numSort.reduce((a,c) => {return a + c}, 0);
-                        console.log(numSort.reduce((a,c) => {return a + c}, 0));
                         break;
                     case ( checkBox.id === 'fak' ):
                         const fakNums = numSort.map((x) => factorialize(x));
                         lastNumbers.innerText = fakNums;
-                        console.log(fakNums);
                         break;
                     default:
                         checkBox.id === orig
                         lastNumbers.innerText = numOrig;
-                        console.log(numOrig);
                         break;
                 }
             }
@@ -455,7 +438,7 @@ function sortNumbers() {
     });
 }
 
-
+/* Class for creating messages and classes */
 class HtmlGenerator {
 
     constructor(tagType, parentElement, contentText) {
