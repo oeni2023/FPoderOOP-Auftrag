@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', sortNumbers);
 /* Rand - Button */
 btnRand.addEventListener('click', () => {
    console.log("'Rand' clicked!");
-    const tiles = document.getElementsByName('results');
+    const tiles = document.querySelectorAll('.results');
     const rand = Math.floor( Math.random() * tiles.length );
     tiles[rand].style.backgroundColor = "yellow";
 
